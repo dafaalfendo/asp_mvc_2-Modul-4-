@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Security;
 using asp_mvc_2.Models.ViewModel;
-using asp_mvc_2.Models.EnityManager;
+using asp_mvc_2.Models.EntityManager;
 
 namespace asp_mvc_2.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Account
         public ActionResult SignUp()
         {
             return View();
@@ -27,19 +22,16 @@ namespace asp_mvc_2.Controllers
                     UM.AddUserAccount(USV);
                     FormsAuthentication.SetAuthCookie(USV.FirstName, false);
                     return RedirectToAction("Welcome", "Home");
-
                 }
                 else
                     ModelState.AddModelError("", "Login Name already taken.");
             }
             return View();
         }
-
         public ActionResult LogIn()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult LogIn(UserLoginView ULV, string returnUrl)
         {
@@ -62,17 +54,13 @@ namespace asp_mvc_2.Controllers
                         ModelState.AddModelError("", "The password provided is incorrect.");
                     }
                 }
-            }
-
-            // If we got this far, something failed, redisplay form 
+            } // If we got this far, something failed, redisplay form 
             return View(ULV);
         }
-
         [Authorize]
         public ActionResult SignOut()
         {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            FormsAuthentication.SignOut(); return RedirectToAction("Index", "Home");
         }
     }
 }
