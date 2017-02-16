@@ -20,23 +20,42 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Alfendo Dafa", "Index", "Home", new { area = "" },new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
-            </div>
-        </div>
-    </div>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">@Html.ActionLink("Rumah", "Index", "Home")</li>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+                    <!-- DropDown example -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">DropDown</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">
+                            <li role="menuitem" class="navbar-header">Header 1</li>
+                            <li role="menuitem">
+                                @Html.ActionLink("Item 1", "Index","Home")
+                        </li>
+                        <li role="menuitem" class="disabled">
+                            @Html.ActionLink("Item 2(disabled)", "Index", "Home")</li>
+                    <li role="menuitem" class="divider"></li>
+                    <li role="menuitem" class="navbar-header">Header 2</li>
+                    <li role="menuitem">
+                        @Html.ActionLink("Item 3", "Index","Home")
+                </li>
+            </ul>
+        </li>
 
+    </ul>
+</div>
+</div>
+</div>
 
-    <script src="~/Scripts/bootstrap.min.js"></script>
+<div class="container body-content">@RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+</div>
+
+<script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
